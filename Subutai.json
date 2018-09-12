@@ -11,11 +11,23 @@
             "peer-criteria": "HTTP-GROUP",
             "size": "${containerSize}",
             "port-mapping": [
-                {
+                 {
                     "protocol": "http",
-                    "domain": "${domainName}",
-                    "internal-port": "8787",
+                    "domain": "${domainName1}",
+                    "internal-port": "3000",
                     "external-port": "80"
+                },
+                  {
+                    "protocol": "tcp",
+                    "domain": "${domainName2}",
+                    "internal-port": "1883",
+                    "external-port": "1883"
+                },
+                  {
+                    "protocol": "tcp",
+                    "domain": "${domainName3}",
+                    "internal-port": "8087",
+                    "external-port": "8087"
                 }
             ]
         }
@@ -31,8 +43,16 @@
         "ansible-playbook": "site.yml",
         "extra-vars": [
             {
-                "key": "domain_name",
-                "value": "${domainName}"
+                "key": "domain_name1",
+                "value": "${domainName1}"
+            },
+            {
+                "key": "domain_name2",
+                "value": "${domainName2}"
+            },
+            {
+                "key": "domain_name3",
+                "value": "${domainName3}"
             },
             {
                 "key": "rstudio_user",
